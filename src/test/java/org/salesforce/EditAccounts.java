@@ -1,9 +1,12 @@
 package org.salesforce;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
@@ -25,9 +28,16 @@ public class EditAccounts extends BaseClass{
 	//wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='navItem slds-context-bar__item slds-shrink-none']//span[contains(text(),'Accounts')]"))).click();
 		jsExecutor2.executeScript("arguments[0].click();",wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@class='navItem slds-context-bar__item slds-shrink-none']//span[contains(text(),'Accounts')]"))));
 		
+		driver.findElement(By.className("slds-input")).sendKeys("veera"+Keys.ENTER);
 		
+		List<WebElement> names = driver.findElements(By.xpath("//table[contains(@class,'slds-table forceRecordLayout')]//tbody"));
 		
-		
+		for (WebElement name : names) {
+			
+			if (name.getText().equalsIgnoreCase("veera")) {
+				driver.findElement(By.xpath(""))
+			}
+		}
 		
 		
 		
