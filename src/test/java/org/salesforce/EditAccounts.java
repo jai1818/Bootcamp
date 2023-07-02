@@ -26,7 +26,7 @@ public class EditAccounts extends BaseClass{
 		Thread.sleep(1000);
 		driver.findElement(By.className("slds-icon-waffle")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'View All')]"))).click();
-		final String name="veera";
+		final String name="Jai";
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'Manage your sales process with accounts, leads, opportunities, and more')]"))).click();
 		//driver.findElement(By.xpath("//*[contains(text(),'Manage your sales process with accounts, leads, opportunities, and more')]")).click();
@@ -74,11 +74,11 @@ public class EditAccounts extends BaseClass{
 				//set SLA
 				driver.findElement(By.xpath("//*[contains(text(),'SLA')]//following-sibling::div//div/div/button")).click();
 				driver.findElement(By.xpath("//div[@role='listbox']//*[@data-value='Silver']")).click();
-				
+
 				//set Active-yes
 				driver.findElement(By.xpath("//label[contains(text(),'Active')]//following-sibling::div//div/div/button")).click();
 				driver.findElement(By.xpath("//div[@role='listbox']//*[@data-value='Yes']")).click();
-				
+
 				//Set phone number
 				driver.findElement(By.xpath("//input[@name='Phone']")).sendKeys("900222");
 				//select upskill oppurtunity
@@ -87,15 +87,15 @@ public class EditAccounts extends BaseClass{
 				driver.findElement(By.xpath("//div[@role='listbox']//*[@data-value='No']")).click();
 				//save
 				driver.findElement(By.xpath("//*[@name=\"SaveEdit\"]")).click();	
-				
+
 				String actual = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@id,'toastDescription')]/span"))).getText();
 				System.out.println(actual);
 				String partialString =" was saved.";
-				
-				
+
+
 				Assert.assertTrue(actual.contains(partialString), "Failed to edit");
 				System.out.println("Edit is successful");
-				
+
 				break;
 			}
 		}

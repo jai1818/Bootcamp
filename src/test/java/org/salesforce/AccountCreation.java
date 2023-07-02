@@ -20,7 +20,7 @@ public class AccountCreation extends BaseClass  {
 		Thread.sleep(1000);
 		driver.findElement(By.className("slds-icon-waffle")).click();
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'View All')]"))).click();
-		
+
 
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[contains(text(),'Manage your sales process with accounts, leads, opportunities, and more')]"))).click();
 		//driver.findElement(By.xpath("//*[contains(text(),'Manage your sales process with accounts, leads, opportunities, and more')]")).click();
@@ -41,11 +41,12 @@ public class AccountCreation extends BaseClass  {
 		driver.findElement(By.xpath("//span[text()='Public']")).click();
 
 		driver.findElement(By.xpath("//button[text()='Save']")).click();
-			//Not able to fetch the message from toast										
-		String text = driver.findElement(By.xpath("//div[contains(@class,'slds-theme--success slds-notify--toast')]")).getText();
-		if (text.contains(name+"created")) {
-		
-		System.out.println("Account"+name+"was created");
+		//Not able to fetch the message from toast										
+		String text =wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[contains(@id,'toastDescription')]/span[contains(text(),'Account')]"))).getText();
+		System.out.println(text);
+		if (text.contains("was created.")) {
+
+			System.out.println("Account"+name+"was created.");
 		}else {
 			System.out.println("Account creation failed");
 		}
